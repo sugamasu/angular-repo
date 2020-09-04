@@ -1,0 +1,13 @@
+/* Tablet or PC  */
+@media only screen and (min-width: 641px) {
+  .mat-icon-button {
+    display: none;
+  }
+}
+
+/* SmartPhone */
+@media screen and (max-width: 640px) {
+  .toolBarMenu {
+    display: none;
+  }
+}

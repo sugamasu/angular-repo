@@ -1,0 +1,20 @@
+<!-- Dashboard的なノリ
+<app-header></app-header>
+<router-outlet></router-outlet> -->
+
+<!-- このヘッダと、サイドバーのトグルの連携は#sidenavになる。 -->
+<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+
+<mat-sidenav-container>
+  <!-- sidenav -->
+  <mat-sidenav #sidenav mode="side">
+    <!-- サイドメニューのコンポーネント -->
+    <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+  </mat-sidenav>
+  <!-- main content -->
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+    <div style="height: 1000px">konntentu-</div>
+    <!-- <app-footer></app-footer> -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

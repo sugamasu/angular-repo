@@ -1,0 +1,31 @@
+<mat-nav-list>
+  <mat-list-item routerLink="/evaluation-result" (click)="onSidenavClose()">
+    <mat-icon>home</mat-icon>{{ "menu.home" }}
+  </mat-list-item>
+
+  <ng-container *ngFor="let item of availableMenuListDtoLists">
+    <mat-list-item [matMenuTriggerFor]="appMenu">
+      <mat-icon>arrow_drop_down</mat-icon>
+      <a matline>{{ item.propertyId }}</a>
+    </mat-list-item>
+    <mat-menu #appMenu="matMenu">
+      <ng-container *ngFor="let subitem of item.availableMenuDto">
+        <button
+          mat-menu-item
+          (click)="onSidenavClose()"
+          routerLink="/{{ subitem.apiName }}"
+        >
+          {{ subitem.propertyId }}
+        </button>
+      </ng-container>
+    </mat-menu>
+  </ng-container>
+
+  <mat-list-item routerLink="/account-setting" (click)="onSidenavClose()">
+    <mat-icon>account_circle</mat-icon> {{ "menu.accountSetting" }}
+  </mat-list-item>
+
+  <mat-list-item routerLink="/sign-out" (click)="onSidenavClose()">
+    <mat-icon>exit_to_app</mat-icon> {{ "menu.signOut" }}
+  </mat-list-item>
+</mat-nav-list>

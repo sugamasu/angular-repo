@@ -1,0 +1,40 @@
+<div *ngIf="this.router.url !== '/signIn'">
+  <mat-toolbar class="toolbar mat-elevation-z8">
+    <mat-toolbar-row class="toolbar">
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <button
+        mat-button
+        (click)="onToggleSidenav()"
+        routerLink=""
+        class="btnMenu"
+      >
+        <div class="systemName">これがメニューか</div>
+      </button>
+
+      <div class="toolBarMenu">
+        <ng-container *ngFor="let item of availableMenuListDtoLists">
+          <button mat-button [matMenuTriggerFor]="appMenu" class="btnMenu">
+            <div class="btnMenu">{{ item.propertyId }}</div>
+          </button>
+          <mat-menu #appMenu="matMenu">
+            <ng-container *ngFor="let subitem of item.availableMenuDto">
+              <button mat-menu-item routerLink="/{{ subitem.apiName }}">
+                {{ subitem.propertyId }}
+              </button>
+            </ng-container>
+          </mat-menu>
+        </ng-container>
+      </div>
+
+      <button mat-button routerLink="/account-setting" class="btnAccount">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+
+      <button mat-button routerLink="/account-setting" class="btnSignOut">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
